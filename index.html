@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compsoft Communications - Leading IT Solutions Provider</title>
+    <meta name="description" content="Comprehensive end-to-end ICT solutions to businesses across Southern Africa using best-of-breed technologies.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Custom animations and styles */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+        
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease-out;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Hamburger animation */
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide sections initially */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-red-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-red-100 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 hover:scale-105 transition-transform">
+                <img src="images/logo.jpg" alt="Compsoft Communications" class="h-10 sm:h-12 w-auto">
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <button onclick="showSection('home')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+                <button onclick="showSection('about')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    About
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+                <button onclick="showSection('services')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    Services
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+                <button onclick="showSection('solutions')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    Solutions
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+                <button onclick="showSection('clients-and-partners')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    Clients & Partners
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+                <button onclick="showSection('contact')" class="nav-link text-blue-800 hover:text-red-600 transition-colors font-medium relative group">
+                    Contact
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                </button>
+            </div>
+
+            <!-- Desktop Get Quote Button -->
+            <button onclick="showSection('contact')" class="hidden md:inline-block bg-red-600 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg hover:bg-red-700 hover:shadow-xl transition-all duration-300 border border-red-600 hover:scale-105">
+                Get a Quote
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="hamburger md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none">
+                <span class="w-6 h-0.5 bg-blue-800"></span>
+                <span class="w-6 h-0.5 bg-blue-800"></span>
+                <span class="w-6 h-0.5 bg-blue-800"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white/95 backdrop-blur-lg border-t border-red-100">
+            <div class="px-4 py-4 space-y-3">
+                <button onclick="showSection('home'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">Home</button>
+                <button onclick="showSection('about'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">About</button>
+                <button onclick="showSection('services'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">Services</button>
+                <button onclick="showSection('solutions'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">Solutions</button>
+                <button onclick="showSection('clients-and-partners'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">Clients & Partners</button>
+                <button onclick="showSection('contact'); closeMobileMenu()" class="block w-full text-left text-blue-800 hover:text-red-600 transition-colors font-medium py-2 px-3 rounded-lg hover:bg-red-50">Contact</button>
+                <button onclick="showSection('contact'); closeMobileMenu()" class="block w-full bg-red-600 text-white px-3 py-2 rounded-full text-sm font-semibold shadow-lg hover:bg-red-700 transition-all duration-300 text-center mt-4">Get a Quote</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home-section" class="content-section active">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-red-50">
+            <video autoPlay muted loop playsInline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="images/hero-video.mp4" type="video/mp4">
+            </video>
+            <!-- Updated overlay to match Next.js app -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/40 via-blue-900/30 to-red-900/30"></div>
+            
+            <div class="relative hero-content text-center py-16 sm:py-20 max-w-5xl mx-auto px-4 sm:px-6 z-10 animate-fade-in-up">
+                <!-- Updated text styling to match Next.js app - blue text, no shadow -->
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 sm:mb-6 text-blue-900 leading-tight animate-scale-in drop-shadow-lg">
+                    Compsoft Communications
+                </h1>
+                <!-- Updated to white text with drop shadow -->
+                <h2 class="text-xl sm:text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 sm:mb-8 leading-tight animate-fade-in-up drop-shadow-lg" style="animation-delay: 0.3s;">
+                    Leading IT Solutions Provider
+                </h2>
+                <!-- Updated text styling to white with drop shadow -->
+                <p class="mt-6 sm:mt-8 max-w-3xl mx-auto text-base sm:text-xl leading-relaxed text-white px-4 animate-fade-in-up drop-shadow-lg" style="animation-delay: 0.5s;">
+                    <span class="drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)]">
+                        Comprehensive end-to-end ICT solutions to businesses across Southern Africa using best-of-breed technologies.
+                    </span>
+                </p>
+                <div class="mt-8 sm:mt-10 inline-block animate-fade-in-up" style="animation-delay: 0.7s;">
+                    <a href="tel:+264851788637" class="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+                        Let's Connect
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Updated scroll indicator to white text -->
+            <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white animate-bounce z-10">
+                <span class="text-xs sm:text-sm font-medium drop-shadow-lg">Scroll Down</span>
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Client Logos Section -->
+        <section class="py-16 bg-gray-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 section-hidden">
+                    Trusted by Industry Leaders
+                </h2>
+
+                <div class="relative">
+                    <div class="flex animate-scroll space-x-12">
+                        <!-- First set of logos -->
+                        <div class="flex space-x-12 min-w-max">
+                            <img src="images/clients/fnb.png" alt="First National Bank" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/standard-bank.png" alt="Standard Bank" class="h-12 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/eos-capital.png" alt="EOS Capital" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/namcor.png" alt="Namcor" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/effort.png" alt="Effort Investment Holdings" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/konrad.png" alt="Konrad" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/transnamib.png" alt="Transnamib" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/mva.png" alt="MVA" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/namib-nuclear.jpeg" alt="Namib Nuclear" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/rfsol.jpeg" alt="Retirement Fund Solutions" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                        </div>
+
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="flex space-x-12 min-w-max">
+                            <img src="images/clients/fnb.png" alt="First National Bank" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/standard-bank.png" alt="Standard Bank" class="h-12 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/eos-capital.png" alt="EOS Capital" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/namcor.png" alt="Namcor" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/effort.png" alt="Effort Investment Holdings" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/konrad.png" alt="Konrad" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/transnamib.png" alt="Transnamib" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/mva.png" alt="MVA" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/namib-nuclear.jpeg" alt="Namib Nuclear" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                            <img src="images/clients/rfsol.jpeg" alt="Retirement Fund Solutions" class="h-16 w-auto object-contain transition-all duration-300 hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Added Compsoft Image Section to match Next.js app -->
+        <section class="py-16 bg-background">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <div class="flex flex-wrap md:flex-nowrap items-center justify-center gap-8 md:gap-12">
+                     <!-- Left Image -->
+                    <div class="flex justify-center section-hidden">
+                        <div class="border-2 border-blue-800/40 rounded-xl p-4 shadow-2xl shadow-blue-900/25 bg-white/80 backdrop-blur-sm hover:shadow-3xl hover:shadow-blue-900/35 hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+                            <img src="images/partners/left-partner.png" alt="Left Partner Logo" class="h-24 w-auto object-contain hover:scale-110 transition-all duration-500 hover:rotate-1">
+                        </div>
+                    </div>
+
+                     <!-- Center Image - Compsoft Communications -->
+                    <div class="flex justify-center section-hidden">
+                        <div class="border-2 border-blue-800/40 rounded-xl p-8 shadow-2xl shadow-blue-900/25 bg-white/80 backdrop-blur-sm hover:shadow-3xl hover:shadow-blue-900/35 hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+                            <img src="images/partners/compsoft.png" alt="Compsoft Communications" class="h-48 w-auto object-contain hover:scale-110 transition-all duration-500 hover:rotate-1">
+                        </div>
+                    </div>
+
+                     <!-- Right Image -->
+                    <div class="flex justify-center section-hidden">
+                        <div class="border-2 border-blue-800/40 rounded-xl p-4 shadow-2xl shadow-blue-900/25 bg-white/80 backdrop-blur-sm hover:shadow-3xl hover:shadow-blue-900/35 hover:border-blue-700/50 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]">
+                            <img src="images/partners/right-partner.png" alt="Right Partner Logo" class="h-24 w-auto object-contain hover:scale-110 transition-all duration-500 hover:rotate-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Added About section preview to match Next.js app -->
+        <section id="about" class="py-24 border-t relative overflow-hidden bg-white">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 section-hidden">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-blue-800">About Compsoft Communications</h2>
+                    <p class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
+                        Compsoft Communications is a leading ICT solutions and service provider in Namibia. We are dedicated to delivering innovative and reliable technology solutions that empower businesses to thrive in the digital age.
+                    </p>
+                </div>
+
+                <!-- Our Vision Card -->
+                <div class="grid grid-cols-1 gap-8 mt-16 max-w-4xl mx-auto mb-16">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-red-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col section-hidden">
+                        <div class="mb-6 rounded-2xl overflow-hidden">
+                            <img src="images/vision-team.jpg" alt="Our Vision - Professional team looking toward the future" class="w-full h-64 object-cover object-center">
+                        </div>
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">Our Vision</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            To be the most trusted and innovative ICT partner in Namibia, enabling our clients to achieve their full potential through cutting-edge technology and exceptional service.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Three-column layout with Mission and What We Do -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Our Mission - Left -->
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-blue-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">Our Mission</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            To provide secure, reliable, and scalable ICT solutions that meet the evolving needs of our clients, fostering long-term partnerships built on trust, integrity, and mutual success.
+                        </p>
+                    </div>
+
+                    <!-- What We Do - Right -->
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-red-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">What We Do</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            We operate a state-of-the-art, IP-based next-generation network to deliver a comprehensive suite of voice, data, and hosted services designed to be flexible and scalable.
+                        </p>
+                    </div>
+                </div>
+                <!-- Added structured cabling image after mission and what we do section -->
+                <div class="mt-16 flex justify-center section-hidden">
+                    <div class="max-w-4xl mx-auto">
+                        <img src="images/structured-cabling.gif" alt="Structured Cabling Solutions" class="w-full h-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Added technology images section to match Next.js app -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="flex justify-center section-hidden">
+                        <img src="images/tech1.jpg" alt="Technology Solutions" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    </div>
+                    <div class="flex justify-center section-hidden">
+                        <img src="images/tech2.jpg" alt="Business Communications" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    </div>
+                    <div class="flex justify-center section-hidden">
+                        <img src="images/tech3.jpg" alt="Network Infrastructure" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-info" class="py-24 border-t relative overflow-hidden bg-white">
+            <div class="max-w-5xl mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent section-hidden">
+                    Contact Us
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="mb-8 section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Our Office</h3>
+                            <p class="text-gray-600 leading-relaxed">NO. 4 Adler Street, Windhoek, Namibia</p>
+                            <p class="text-gray-600 leading-relaxed">P.O. Box 1234, Windhoek, Namibia</p>
+                        </div>
+
+                        <div class="mb-8 section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Contact Details</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Email: 
+                                <a href="mailto:info@compsoftcommunications.com" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                    info@compsoftcommunications.com
+                                </a>
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                Phone: 
+                                <a href="tel:+264851788637" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                    +264851788637
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Business Hours</h3>
+                            <p class="text-gray-600 leading-relaxed">Monday - Friday: 8:00 AM to 5:00 PM</p>
+                            <p class="text-gray-600 leading-relaxed">Saturday: 9:00 AM to 1:00 PM</p>
+                            <p class="text-gray-600 leading-relaxed">Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <form id="contact-form-home" class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-gray-100 section-hidden">
+                            <div class="mb-4">
+                                <label for="name-home" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                                <input type="text" id="name-home" name="name" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors" placeholder="Enter your name">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="email-home" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+                                <input type="email" id="email-home" name="email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors" placeholder="Enter your email">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="message-home" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                <textarea id="message-home" name="message" rows="4" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-relaxed focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors resize-vertical" placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <button class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-300 hover:scale-105" type="submit">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Section -->
+    <div id="about-section" class="content-section">
+        <section id="about" class="py-24 border-t relative overflow-hidden bg-white">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 section-hidden">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-blue-800">About Compsoft Communications</h2>
+                    <p class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
+                        Compsoft Communications is a leading ICT solutions and service provider in Namibia. We are dedicated to delivering innovative and reliable technology solutions that empower businesses to thrive in the digital age.
+                    </p>
+                </div>
+
+                <!-- Our Vision Card -->
+                <div class="grid grid-cols-1 gap-8 mt-16 max-w-4xl mx-auto mb-16">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-red-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col section-hidden">
+                        <div class="mb-6 rounded-2xl overflow-hidden">
+                            <img src="images/vision-team.jpg" alt="Our Vision - Professional team looking toward the future" class="w-full h-64 object-cover object-center">
+                        </div>
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">Our Vision</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            To be the most trusted and innovative ICT partner in Namibia, enabling our clients to achieve their full potential through cutting-edge technology and exceptional service.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Three-column layout with Mission and What We Do -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Our Mission - Left -->
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-blue-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">Our Mission</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            To provide secure, reliable, and scalable ICT solutions that meet the evolving needs of our clients, fostering long-term partnerships built on trust, integrity, and mutual success.
+                        </p>
+                    </div>
+
+                    <!-- What We Do - Right -->
+                    <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 md:p-8 border border-red-100 hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-gray-900">What We Do</h3>
+                        <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                            We operate a state-of-the-art, IP-based next-generation network to deliver a comprehensive suite of voice, data, and hosted services designed to be flexible and scalable.
+                        </p>
+                    </div>
+                </div>
+                <!-- Added structured cabling image after mission and what we do section -->
+                <div class="mt-16 flex justify-center section-hidden">
+                    <div class="max-w-4xl mx-auto">
+                        <img src="images/structured-cabling.gif" alt="Structured Cabling Solutions" class="w-full h-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services-section" class="content-section">
+        <section id="services" class="py-24 border-t relative overflow-hidden bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent section-hidden">
+                    Our Services
+                </h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-red-600 transition-colors">
+                            Connectivity Solutions
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Reliable and high-speed connectivity to keep your business connected.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                DSL/ADSL/SAIX
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Fiber & Metro Ethernet
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Wireless Solutions
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                MPLS Networks
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Collaboration
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Enhance teamwork and communication with our integrated collaboration tools.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                PABX Systems
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Video Conferencing
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Unified Communications
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Mobile Integration
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-red-600 transition-colors">
+                            Data Center Solutions
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Secure and scalable data center solutions to support your business growth.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Cisco UCS
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Storage Solutions
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Virtualization
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Cloud Migration
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Converged Security
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Comprehensive security solutions to protect your business assets and data.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Access Control
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Surveillance
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Network Security
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Fire Detection
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-red-600 transition-colors">
+                            Network Solutions
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Expert network solutions to optimize performance and ensure reliability.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Network Design
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Optimization
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Management
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Support
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 p-8 border border-gray-100 section-hidden">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors">
+                            Contact Centre
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">Advanced solutions to enhance customer service and support.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Call Recording
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Quality Assurance
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Analytics
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Training
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Solutions Section -->
+    <div id="solutions-section" class="content-section">
+        <section id="solutions" class="py-24 border-t relative overflow-hidden bg-white">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent section-hidden">
+                    Solution Portfolio
+                </h2>
+
+                <div class="space-y-16">
+                    <div>
+                        <h3 class="relative mb-8 text-3xl font-bold tracking-tight after:absolute after:bottom-[-8px] after:left-0 after:h-1 after:w-16 after:bg-gradient-to-r after:from-red-500 after:to-blue-600 after:rounded-full section-hidden">
+                            Connectivity
+                        </h3>
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                            <div class="flex items-start gap-4 rounded-2xl border border-red-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Last Mile Connectivity</h4>
+                                    <p class="text-sm text-gray-600">Reliable and high-speed connectivity solutions to keep your business connected, ensuring uptime and performance.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-red-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Voice and Data</h4>
+                                    <p class="text-sm text-gray-600">Integrated voice and data solutions for seamless communication and efficient operational workflow.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-red-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Business Internet Access</h4>
+                                    <p class="text-sm text-gray-600">High-speed, dedicated internet access tailored for business needs, providing stability and security.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-red-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Virtual Private Network</h4>
+                                    <p class="text-sm text-gray-600">Secure and private network solutions for multi-site businesses, guaranteeing data integrity and confidentiality.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="relative mb-8 text-3xl font-bold tracking-tight after:absolute after:bottom-[-8px] after:left-0 after:h-1 after:w-16 after:bg-gradient-to-br after:from-blue-500 after:to-red-500 after:rounded-full section-hidden">
+                            Data Center Solutions
+                        </h3>
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                            <div class="flex items-start gap-4 rounded-2xl border border-blue-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2-2V6a2 2 0 002-2h14a2 2 0 002 2v4a2 2 0 00-2 2m-2-4h.01M17 16h.01"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Computing</h4>
+                                    <p class="text-sm text-gray-600">Powerful and scalable computing resources to handle your most demanding applications and workloads.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-blue-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2-2V6a2 2 0 002-2h14a2 2 0 002 2v4a2 2 0 00-2 2m-2-4h.01M17 16h.01"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Storage</h4>
+                                    <p class="text-sm text-gray-600">Secure, reliable, and high-performance storage solutions to manage and protect your critical business data.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-blue-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2-2V6a2 2 0 002-2h14a2 2 0 002 2v4a2 2 0 00-2 2m-2-4h.01M17 16h.01"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Virtualization</h4>
+                                    <p class="text-sm text-gray-600">Optimize your IT infrastructure with our virtualization services, improving efficiency and reducing costs.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 rounded-2xl border border-blue-100 bg-white/80 backdrop-blur-sm p-6 transition-all hover:shadow-2xl hover:-translate-y-1 section-hidden">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2-2V6a2 2 0 002-2h14a2 2 0 002 2v4a2 2 0 00-2 2m-2-4h.01M17 16h.01"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold mb-2 text-gray-900">Cloud & Hosted Services</h4>
+                                    <p class="text-sm text-gray-600">Flexible and scalable cloud and hosted services to support your business's growth and digital transformation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Clients & Partners Section -->
+    <div id="clients-and-partners-section" class="content-section">
+        <section id="clients-and-partners" class="py-24 border-t relative overflow-hidden bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent section-hidden">
+                    Clients & Partners
+                </h2>
+
+                <div class="text-center mb-12 section-hidden">
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        We are proud to collaborate with a diverse range of clients and partners who are leaders in their respective industries.
+                    </p>
+                </div>
+
+                <div class="mb-20">
+                    <h3 class="text-center text-3xl font-extrabold tracking-tight text-gray-900 mb-10 section-hidden">
+                        Notable Clients
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/standard-bank.png" alt="Standard Bank Logo" class="max-h-16 max-w-16 object-contain scale-80">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Standard Bank</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/fnb.png" alt="FNB Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">FNB</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/eos-capital.png" alt="EOS Capital Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">EOS Capital</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/namcor.png" alt="NAMCOR Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">NAMCOR</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/effort.png" alt="Effort Investment Holdings Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Effort Investment Holdings</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/transnamib.png" alt="Transnamib Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Transnamib</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/konrad.png" alt="Konrad Adenauer Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Konrad Adenauer</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/namib-nuclear.jpeg" alt="Namib Nuclear Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Namib Nuclear</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/mva.png" alt="MVA Fund Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">MVA Fund</h3>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl transition-all hover:shadow-3xl hover:scale-105 hover:-translate-y-1 section-hidden">
+                            <div class="h-16 w-16 flex items-center justify-center">
+                                <img src="images/clients/rfsol.jpeg" alt="Retirement Fund Solutions Logo" class="max-h-16 max-w-16 object-contain">
+                            </div>
+                            <h3 class="text-center text-sm font-semibold text-gray-700">Retirement Fund Solutions</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-center text-3xl font-extrabold tracking-tight text-gray-900 mb-10 section-hidden">
+                        Key Vendors & Strategic Partners
+                    </h3>
+                    <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-8 items-center justify-center">
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/hp.png" alt="HP Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/lenovo.png" alt="Lenovo Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/cisco.png" alt="Cisco Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/dell.png" alt="Dell Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/jabra.png" alt="Jabra Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/polycom.png" alt="Polycom Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/webroot.png" alt="Webroot Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/microsoft.png" alt="Microsoft Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+
+                        <div class="flex items-center justify-center p-4 bg-white rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-110 hover:-translate-y-1 section-hidden">
+                            <img src="images/vendors/veeam.jpg" alt="Veeam Logo" class="h-12 max-w-20 object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-center section-hidden">
+                    <p class="mx-auto max-w-2xl text-2xl font-semibold leading-relaxed text-gray-800">
+                        Join these industry leaders who trust Compsoft Communications to deliver innovative ICT solutions that drive business success.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section" class="content-section">
+        <section id="contact" class="py-24 border-t relative overflow-hidden bg-white">
+            <div class="max-w-5xl mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent section-hidden">
+                    Contact Us
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="mb-8 section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Our Office</h3>
+                            <p class="text-gray-600 leading-relaxed">NO. 4 Adler Street, Windhoek, Namibia</p>
+                            <p class="text-gray-600 leading-relaxed">P.O. Box 1234, Windhoek, Namibia</p>
+                        </div>
+
+                        <div class="mb-8 section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Contact Details</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Email: 
+                                <a href="mailto:info@compsoftcommunications.com" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                    info@compsoftcommunications.com
+                                </a>
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                Phone: 
+                                <a href="tel:+264851788637" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                    +264851788637
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="section-hidden">
+                            <h3 class="text-2xl font-semibold mb-4 text-gray-900">Business Hours</h3>
+                            <p class="text-gray-600 leading-relaxed">Monday - Friday: 8:00 AM to 5:00 PM</p>
+                            <p class="text-gray-600 leading-relaxed">Saturday: 9:00 AM to 1:00 PM</p>
+                            <p class="text-gray-600 leading-relaxed">Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <form id="contact-form-detailed" class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-gray-100 section-hidden">
+                            <div class="mb-4">
+                                <label for="name-detailed" class="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
+                                <input type="text" id="name-detailed" name="name" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors" placeholder="Enter your name">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="email-detailed" class="block text-gray-700 text-sm font-bold mb-2">Your Email</label>
+                                <input type="email" id="email-detailed" name="email" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors" placeholder="Enter your email">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="message-detailed" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                <textarea id="message-detailed" name="message" rows="4" required class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-relaxed focus:outline-none focus:shadow-outline focus:border-blue-500 transition-colors resize-vertical" placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <button class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition-all duration-300 hover:scale-105" type="submit">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-50 border-t">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-600">
+                &copy; <span id="current-year"></span> Compsoft Communications. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+
+        // Section navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-red-600');
+                link.classList.add('text-blue-800');
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger animations for the new section
+            setTimeout(() => {
+                animateVisibleElements();
+            }, 100);
+        }
+
+        // Intersection Observer for animations
+        function animateVisibleElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('section-hidden');
+                        entry.target.classList.add('section-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all elements with section-hidden class
+            const hiddenElements = document.querySelectorAll('.section-hidden');
+            hiddenElements.forEach(el => observer.observe(el));
+        }
+
+        // Form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+
+            // Simulate form submission
+            console.log('Form submitted:', data);
+            alert('Message sent successfully! We will get back to you soon.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up form handlers
+            const contactForms = document.querySelectorAll('#contact-form, #contact-form-detailed, #contact-form-home');
+            contactForms.forEach(form => {
+                form.addEventListener('submit', handleFormSubmit);
+            });
+
+            // Initial animation trigger
+            setTimeout(() => {
+                animateVisibleElements();
+            }, 500);
+
+            // Scroll animations
+            window.addEventListener('scroll', () => {
+                animateVisibleElements();
+            });
+        });
+    </script>
+</body>
+</html>
